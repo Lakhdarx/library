@@ -147,3 +147,38 @@ body {
     gap: 20px;
 }
 
+
+
+/* main */
+
+.main {
+    padding: 25px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(270px,1fr)); 
+    align-content: start;
+  
+    column-gap: 20px;
+    row-gap: 20px;
+}
+
+.book-card {
+    background: white;
+    padding: 20px;
+    border: 0;
+    border-radius: 5px;
+    height:max-content;
+    border-left: 8px solid #f0b429;
+    
+}
+
+
+#add-book svg {
+    width: 48px;
+    height: 48px;
+}
+
+
+#add-book {
+    justify-self: center;
+    align-self: center;
+}
