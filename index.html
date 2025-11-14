@@ -43,35 +43,32 @@
             <div class="night-container"><img src="icons/night-svgrepo-com.svg" alt="" class="svg"></div>
             <div class="notify-container"><img src="icons/notifications-svgrepo-com.svg" alt="" class="svg"></div>
             <img src="icons/Guy-Baron.jpg" alt="" id="profile-pic">
+            <button id="add-book">ADD BOOK</button>
         </div>
+
     </header>
     <main class="main">
         <!-- Sample book -->
-        <div class="book-card">
-            <h4>Name: </h4>
-            <span>Lord of the rings</span>
-            <h4>Author: </h4>
-            <span>Andrei Soljuki</span>
-            <h4>Status: </h4>
-            <span>Not read</span>
-            <h4>Pages</h4>
-            <span>126</span>
-        </div>
-        <div class="book-card">
-            <h4>Name: </h4>
-            <span>Lord of the rings</span>
-            <h4>Author: </h4>
-            <span>Andrei Soljuki</span>
-            <h4>Status: </h4>
-            <span>Not read</span>
-            <h4>Pages</h4>
-            <span>126</span>
-        </div>
- 
-        <div id="add-book">
-            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <circle cx="12" cy="12" r="10" stroke="#000000" stroke-width="1.5"></circle> <path d="M15 12L12 12M12 12L9 12M12 12L12 9M12 12L12 15" stroke="#000000" stroke-width="1.5" stroke-linecap="round"></path> </g></svg>
-        </div>
+        <!-- <div class="book-card">
+            <h5>Name: Lord of the rings</h5>
+            
+            <h5>Author: Andrei Soljuki</h5>
+            <h5>Pages: 128</h5>
+            <h5>Status: Not read</h5>
+            <button class="remove-btn">Remove</button>
+        </div> -->
         
+
+        <form method="get" id="book-form" style="display: none" >
+            <input type="text" placeholder="Book name" id="name-input" required>
+            <input type="text" placeholder="Author" id="author-input" required>
+            <input type="text" placeholder="Pages" id="pages-input" required>
+            <select id="status-input" required >
+                <option value="read">Read</option>
+                <option value="not-read">Not read</option>
+            </select>
+            <button type="submit">Add book</button>
+        </form>
 
     </main>
 </body>

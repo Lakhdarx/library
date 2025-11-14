@@ -178,7 +178,9 @@ body {
 }
 
 
-#add-book {
-    justify-self: center;
-    align-self: center;
+
+
+.remove-btn {
+    display:block;
+    
 }
