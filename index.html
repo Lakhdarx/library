@@ -33,6 +33,18 @@
                 <h3>Help</h3>
             </div>
         </div>
+        <div class="form-container">
+            <form method="get" id="book-form" style="display: none" >
+                <input type="text" placeholder="Book name" id="name-input" required>
+                <input type="text" placeholder="Author" id="author-input" required>
+                <input type="text" placeholder="Pages" id="pages-input" required>
+                <select id="status-input" required >
+                    <option value="Read">Read</option>
+                    <option value="Not read">Not read</option>
+                </select>
+                <button type="submit">Add book</button>
+            </form>
+        </div>
     </div>
     <header class="header">
         <form action="" method="get">
@@ -48,28 +60,6 @@
 
     </header>
     <main class="main">
-        <!-- Sample book -->
-        <!-- <div class="book-card">
-            <h5>Name: Lord of the rings</h5>
-            
-            <h5>Author: Andrei Soljuki</h5>
-            <h5>Pages: 128</h5>
-            <h5>Status: Not read</h5>
-            <button class="remove-btn">Remove</button>
-        </div> -->
-        
-
-        <form method="get" id="book-form" style="display: none" >
-            <input type="text" placeholder="Book name" id="name-input" required>
-            <input type="text" placeholder="Author" id="author-input" required>
-            <input type="text" placeholder="Pages" id="pages-input" required>
-            <select id="status-input" required >
-                <option value="read">Read</option>
-                <option value="not-read">Not read</option>
-            </select>
-            <button type="submit">Add book</button>
-        </form>
-
-    </main>
+    </main> 
 </body>
 </html>

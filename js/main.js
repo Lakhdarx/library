@@ -29,7 +29,7 @@ function displayBooks() {
         card.classList.add('book-card');
 
         const nameB = document.createElement('h5');
-        nameB.textContent = `Name: ${book}`;
+        nameB.textContent = `Name: ${book.name}`;
 
         const auth = document.createElement('h5');
         auth.textContent = `Author: ${book.author}`;
@@ -50,7 +50,7 @@ function displayBooks() {
         card.appendChild(pgs);
         card.appendChild(stat);
         card.appendChild(BtnR);
-        container.appendChild(card);
+        container.prepend(card);
 
     });
     attachRemoveListeners();
@@ -58,7 +58,7 @@ function displayBooks() {
 }
 
 function attachRemoveListeners() {
-    const btns = document.querySelectorAll("remove-btn");
+    const btns = document.querySelectorAll(".remove-btn");
     btns.forEach((btn) => {
         btn.addEventListener('click', (e) => {
             const id = e.target.dataset.id;
@@ -80,7 +80,7 @@ bookForm.addEventListener('submit', (e) => {
     const name = document.querySelector('#name-input').value;
     const author = document.querySelector("#author-input").value;
     const pages = document.querySelector("#pages-input").value;
-    const status = document.querySelector("status-input").value;
+    const status = document.querySelector("#status-input").value;
 
     bookForm.reset();
     bookForm.style.display = 'none';
