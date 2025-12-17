@@ -4,87 +4,106 @@ const addBtn = document.querySelector("#add-book");
 const bookForm = document.querySelector("#book-form");
 
 class Book {
-    constructor(name, author, pages, status) {
-        this.id = crypto.randomUUID();
-        this.name = name;
-        this.author = author;
-        this.pages = pages;
-        this.status = status;
-    }
+  constructor(name, author, pages, status) {
+    this.id = crypto.randomUUID();
+    this.name = name;
+    this.author = author;
+    this.pages = pages;
+    this.status = status;
+  }
 }
 
 function addBook(name, author, pages, status) {
-   const book = new Book(name, author, pages, status);
-   myLibrary.push(book); 
+  const book = new Book(name, author, pages, status);
+  myLibrary.push(book);
 }
 
-
-
-
 function displayBooks() {
-    container.innerHTML = '';
+  container.innerHTML = "";
 
-    myLibrary.forEach((book) => {
-        const card = document.createElement('div');
-        card.classList.add('book-card');
+  myLibrary.forEach((book) => {
+    const card = document.createElement("div");
+    card.classList.add("book-card");
 
-        const nameB = document.createElement('h5');
-        nameB.textContent = `Name: ${book.name}`;
+    const nameB = document.createElement("h5");
+    nameB.textContent = `Name: ${book.name}`;
 
-        const auth = document.createElement('h5');
-        auth.textContent = `Author: ${book.author}`;
+    const auth = document.createElement("h5");
+    auth.textContent = `Author: ${book.author}`;
 
-        const pgs = document.createElement('h5');
-        pgs.textContent = `Pages: ${book.pages}`;
+    const pgs = document.createElement("h5");
+    pgs.textContent = `Pages: ${book.pages}`;
 
-        const stat = document.createElement('h5');
-        stat.textContent = `Status: ${book.status}`;
+    const stat = document.createElement("h5");
+    stat.textContent = `Status: ${book.status}`;
 
-        const BtnR = document.createElement('button');
-        BtnR.textContent = 'Remove';
-        BtnR.classList.add('remove-btn');
-        BtnR.dataset.id = book.id;
+    const BtnR = document.createElement("button");
+    BtnR.textContent = "Remove";
+    BtnR.classList.add("remove-btn");
+    BtnR.dataset.id = book.id;
 
-        card.appendChild(nameB);
-        card.appendChild(auth);
-        card.appendChild(pgs);
-        card.appendChild(stat);
-        card.appendChild(BtnR);
-        container.prepend(card);
-
-    });
-    attachRemoveListeners();
-
+    card.appendChild(nameB);
+    card.appendChild(auth);
+    card.appendChild(pgs);
+    card.appendChild(stat);
+    card.appendChild(BtnR);
+    container.prepend(card);
+  });
+  attachRemoveListeners();
 }
 
 function attachRemoveListeners() {
-    const btns = document.querySelectorAll(".remove-btn");
-    btns.forEach((btn) => {
-        btn.addEventListener('click', (e) => {
-            const id = e.target.dataset.id;
-            myLibrary = myLibrary.filter((book) => book.id !== id);
-            displayBooks();
-        });
+  const btns = document.querySelectorAll(".remove-btn");
+  btns.forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      const id = e.target.dataset.id;
+      myLibrary = myLibrary.filter((book) => book.id !== id);
+      displayBooks();
     });
+  });
 }
 
-
-addBtn.addEventListener('click', (e) => {
-    bookForm.style.display = bookForm.style.display === 'none' ? 'block' : 'none';   
+addBtn.addEventListener("click", (e) => {
+  bookForm.style.display = bookForm.style.display === "none" ? "block" : "none";
 });
 
+bookForm.addEventListener("submit", (e) => {
+  e.preventDefault();
 
-bookForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    
-    const name = document.querySelector('#name-input').value;
-    const author = document.querySelector("#author-input").value;
-    const pages = document.querySelector("#pages-input").value;
-    const status = document.querySelector("#status-input").value;
+  const name = document.querySelector("#name-input").value;
+  const author = document.querySelector("#author-input").value;
+  const pages = document.querySelector("#pages-input").value;
+  const status = document.querySelector("#status-input").value;
 
-    bookForm.reset();
-    bookForm.style.display = 'none';
-    addBook(name, author, pages, status);
-    displayBooks();
+  bookForm.reset();
+  bookForm.style.display = "none";
+  addBook(name, author, pages, status);
+  displayBooks();
+});
 
+// Adding custom error message to Author input
+const author = document.querySelector("#author-input");
+
+const forbiddenNames = ["Voldemort", "Darth Vader", "Thanos"];
+
+author.addEventListener("invalid", () => {
+  // 1️⃣ Required check
+  if (author.validity.valueMissing) {
+    author.setCustomValidity("Author name is required.");
+    return; // stop further checks
+  }
+});
+
+author.addEventListener("input", () => {
+  // Clear message on typing
+
+  if (
+    author.value === "lakhdar" ||
+    author.value === "LAKHDAR" ||
+    author.value === "Lakhdar"
+  ) {
+    author.setCustomValidity("Nah I never wrote that!");
+  } else {
+    author.setCustomValidity("");
+  }
 });
